@@ -1,18 +1,19 @@
-//your code here
+//your code here/
 function removeArticles(text) {
   const articles = ["a", "an", "the"];
   const words = text.split(" ");
   return words.filter(word => !articles.includes(word.toLowerCase())).join(" ");
 }
 
-let touristSpots = ['The Virupaksha Temple', 'Victoria Memorial', 'Tajmahal'];
-let modifiedArray = touristSpots.map(removeArticles);
-let ans=[];
+// Example array of strings
+ originalArray = ['Tajmahal', 'Tajmahal', 'Tajmahal'];
 
-let sorted=modifiedArray.sort();
-for(let i=0;i<touristSpots.length;i++){
-	let words=removeArticles(touristSpots[i])
-	let indexSort=sorted.indexOf(words);
-    ans[indexSort]=touristSpots[i];
-}
-console.log(ans);
+const modifiedArray = originalArray.map(removeArticles);
+const sortedArray = modifiedArray.slice().sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'base' }));
+
+const outputArray = sortedArray.map((modifiedStr) => {
+  const index = modifiedArray.indexOf(modifiedStr);
+	console.log(index)
+  return originalArray[index];
+});
+console.log(outputArray);
